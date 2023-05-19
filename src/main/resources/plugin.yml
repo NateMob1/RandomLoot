@@ -1,0 +1,9 @@
+name: RandomLoot
+version: '${project.version}'
+main: org.nathanlovette.randomloot.RandomLoot
+api-version: 1.19
+commands:
+  randomloot:
+    description: Creates a chest at <x> <y> <z> coordinates containing <item> of a random amount between <minimumAmount> and <maximumAmount>
+    usage: /<command> <x> <y> <z> <item> <minimumAmount> <maximumAmount>
+    permission: randomloot.randomloot
