@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomLootTabCompleter implements TabCompleter {
+    @SuppressWarnings("NullableProblems")
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         List<String> completions = new ArrayList<>();
 
@@ -30,14 +31,6 @@ public class RandomLootTabCompleter implements TabCompleter {
                     completions.add(materialName);
                 }
             }
-        } else if (args.length == 5) {
-            // Generate suggestions for the minimumAmountInteger argument
-//            completions.add("1");
-//            completions.add("5");
-        } else if (args.length == 6) {
-            // Generate suggestions for the maximumAmountInteger argument
-//            completions.add("10");
-//            completions.add("20");
         }
 
         return completions;

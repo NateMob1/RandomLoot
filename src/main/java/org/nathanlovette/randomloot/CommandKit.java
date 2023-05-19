@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class CommandKit implements CommandExecutor {
 
+    @SuppressWarnings("NullableProblems")
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         int[] givenCoordinates = new int[3];
@@ -29,7 +30,7 @@ public class CommandKit implements CommandExecutor {
             return false;
         }
 
-        // is args[0 thru 2] integers (coordinates)?
+        // is args[0 through 2] integers (coordinates)?
         for (int i = 0; i < 3; i++) {
             String arg = args[i];
 
@@ -38,22 +39,22 @@ public class CommandKit implements CommandExecutor {
                     // Use the player's current location for relative coordinates
                     Location playerLocation = ((Player) commandSender).getLocation();
                     if (i == 0) {
-                        givenCoordinates[i] = (int) playerLocation.getBlock().getLocation().getBlockX();
+                        givenCoordinates[i] = playerLocation.getBlock().getLocation().getBlockX();
                     } else if (i == 1) {
-                        givenCoordinates[i] = (int) playerLocation.getBlock().getLocation().getBlockY();
+                        givenCoordinates[i] = playerLocation.getBlock().getLocation().getBlockY();
                     } else {
-                        givenCoordinates[i] = (int) playerLocation.getBlock().getLocation().getBlockZ();
+                        givenCoordinates[i] = playerLocation.getBlock().getLocation().getBlockZ();
                     }
 
                 } else if (commandSender instanceof BlockCommandSender) {
                     // Use the command block's location for relative coordinates
                     Location blockLocation = ((BlockCommandSender) commandSender).getBlock().getLocation();
                     if (i == 0) {
-                        givenCoordinates[i] = (int) blockLocation.getBlock().getLocation().getBlockX();
+                        givenCoordinates[i] = blockLocation.getBlock().getLocation().getBlockX();
                     } else if (i == 1) {
-                        givenCoordinates[i] = (int) blockLocation.getBlock().getLocation().getBlockY();
+                        givenCoordinates[i] = blockLocation.getBlock().getLocation().getBlockY();
                     } else {
-                        givenCoordinates[i] = (int) blockLocation.getBlock().getLocation().getBlockZ();
+                        givenCoordinates[i] = blockLocation.getBlock().getLocation().getBlockZ();
                     }
                 } else {
                     // Cannot use relative coordinates from the console
@@ -102,7 +103,8 @@ public class CommandKit implements CommandExecutor {
         }
 
         // is args[5] (maximum amount) >= 0?
-        if (givenMaxAmount < 0) {
+        //noinspection ConstantValue (why does it say that????)
+        if (givenMaxAmount < 0 ) {
             return false;
         }
 
