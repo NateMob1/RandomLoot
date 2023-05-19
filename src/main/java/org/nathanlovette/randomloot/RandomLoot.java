@@ -16,7 +16,7 @@ public final class RandomLoot extends JavaPlugin {
         // Plugin startup logic
         Objects.requireNonNull(this.getCommand("randomloot")).setExecutor(new RandomLootCommand());
         Objects.requireNonNull(this.getCommand("randomloot")).setTabCompleter(new RandomLootTabCompleter());
-        Objects.requireNonNull(this.getCommand("randomlootmenu")).setExecutor(new RandomLootMenuCommand());
+        Objects.requireNonNull(this.getCommand("randomlootmenu")).setExecutor(new RandomLootMenuCommand(this));
         Objects.requireNonNull(this.getCommand("randomlootobj")).setExecutor(new RandomLootObjectCommand());
     }
 
