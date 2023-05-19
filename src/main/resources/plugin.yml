@@ -7,3 +7,11 @@ commands:
     description: Creates a chest at <x> <y> <z> coordinates containing <item> of a random amount between <minimumAmount> and <maximumAmount>
     usage: /<command> <x> <y> <z> <item> <minimumAmount> <maximumAmount>
     permission: randomloot.randomloot
+  randomlootmenu:
+    description: Opens the RandomLoot menu
+    usage: /<command>
+    permission: randomloot.randomloot
+  randomlootobj:
+    description: Executes the randomloot using the object given by /randomlootmenu
+    usage: /<command> <object>
+    permission: randomloot.randomloot
