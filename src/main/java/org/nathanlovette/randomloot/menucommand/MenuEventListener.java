@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class MenuEventListener implements Listener {
     private Inventory guiMenu;
@@ -25,7 +26,13 @@ public class MenuEventListener implements Listener {
             ItemStack clickedItemStack = guiMenu.getItem(clickedSlot); // Get the item in the clicked slot
 
             if (clickedSlot == 0) {
-                clickedItemStack.getItemMeta().setDisplayName("Not available");
+                // Get the ItemMeta of the ItemStack
+                ItemMeta itemMeta = clickedItemStack.getItemMeta();
+
+                // Set the display name
+                itemMeta.setDisplayName("Not Available");
+                // Set the modified ItemMeta back to the ItemStack
+                clickedItemStack.setItemMeta(itemMeta);
             } else if (clickedSlot == 2) {
                 // switch to Item Info
             }

@@ -36,12 +36,14 @@ public class RandomLootMenuCommand implements CommandExecutor {
         ItemStack chestItemStack = new ItemStack(Material.CHEST);
         ItemMeta chestItemMeta = chestItemStack.getItemMeta();
         chestItemMeta.setDisplayName("Chest Info");
+        chestItemStack.setItemMeta(chestItemMeta);
         guiMenu.addItem(chestItemStack);
 
 
         ItemStack appleItemStack = new ItemStack(Material.APPLE);
-        ItemMeta appleItemMeta = chestItemStack.getItemMeta();
+        ItemMeta appleItemMeta = appleItemStack.getItemMeta();
         appleItemMeta.setDisplayName("Item Info");
+        appleItemStack.setItemMeta(appleItemMeta);
         guiMenu.addItem(appleItemStack);
 
         // Register the event listener
