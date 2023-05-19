@@ -1,18 +1,16 @@
 package org.nathanlovette.randomloot.menucommand;
 
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-public class EventListener implements Listener {
+public class MenuEventListener implements Listener {
     private Inventory guiMenu;
 
-    public EventListener(Inventory guiMenu) {
+    public MenuEventListener(Inventory guiMenu) {
         this.guiMenu = guiMenu;
     }
 
@@ -24,7 +22,13 @@ public class EventListener implements Listener {
             Player player = (Player) event.getWhoClicked();
 
             int clickedSlot = event.getSlot();
-            ItemStack clickedItem = guiMenu.getItem(clickedSlot); // Get the item in the clicked slot
+            ItemStack clickedItemStack = guiMenu.getItem(clickedSlot); // Get the item in the clicked slot
+
+            if (clickedSlot == 0) {
+                clickedItemStack.getItemMeta().setDisplayName("Not available");
+            } else if (clickedSlot == 2) {
+                // switch to Item Info
+            }
 
         }
     }

@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import static org.bukkit.Bukkit.getServer;
@@ -24,17 +25,27 @@ public class RandomLootMenuCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Create the GUI menu inventory
-        RandomLootMainMenu randomLootMainMenu = new RandomLootMainMenu();
-        Inventory guiMenu = Bukkit.createInventory(null, randomLootMainMenu.menuSize, randomLootMainMenu.title);
+//        RandomLootMainMenu randomLootMainMenu = new RandomLootMainMenu();
+        Inventory guiMenu = Bukkit.createInventory(null, 9, "Random Loot Menu");
+//
+//        // Fill the GUI menu with items
+//        for (MenuButton button : randomLootMainMenu.buttons) {
+//            // Perform operations with each button
+//            guiMenu.setItem(button.slot, button.toItemStack());
+//        }
+        ItemStack chestItemStack = new ItemStack(Material.CHEST);
+        ItemMeta chestItemMeta = chestItemStack.getItemMeta();
+        chestItemMeta.setDisplayName("Chest Info");
+        guiMenu.addItem(chestItemStack);
 
-        // Fill the GUI menu with items
-        for (MenuButton button : randomLootMainMenu.buttons) {
-            // Perform operations with each button
-            guiMenu.setItem(button.slot, button.toItemStack());
-        }
+
+        ItemStack appleItemStack = new ItemStack(Material.APPLE);
+        ItemMeta appleItemMeta = chestItemStack.getItemMeta();
+        appleItemMeta.setDisplayName("Item Info");
+        guiMenu.addItem(appleItemStack);
 
         // Register the event listener
-        getServer().getPluginManager().registerEvents(new EventListener(guiMenu), plugin);
+        getServer().getPluginManager().registerEvents(new MenuEventListener(guiMenu), plugin);
 
         // Open the GUI menu
         Player player = (Player) sender;
