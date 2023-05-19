@@ -12,6 +12,6 @@ commands:
     usage: /<command>
     permission: randomloot.randomloot
   randomlootobj:
-    description: Executes the randomloot using the object given by /randomlootmenu
-    usage: /<command> <object>
+    description: Executes the randomloot using the object string given by /randomlootmenu
+    usage: /<command> <objectString>
     permission: randomloot.randomloot
