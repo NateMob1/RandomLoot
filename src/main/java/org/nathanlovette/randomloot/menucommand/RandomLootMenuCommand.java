@@ -5,8 +5,10 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
@@ -22,17 +24,17 @@ public class RandomLootMenuCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Create the GUI menu inventory
-        Inventory guiMenu = Bukkit.createInventory(null, 9, "My GUI Menu");
+        RandomLootMainMenu randomLootMainMenu = new RandomLootMainMenu();
+        Inventory guiMenu = Bukkit.createInventory(null, randomLootMainMenu.menuSize, randomLootMainMenu.title);
 
         // Fill the GUI menu with items
-        ItemStack item1 = new ItemStack(Material.APPLE);
-        guiMenu.setItem(0, item1);
-
-        ItemStack item2 = new ItemStack(Material.BREAD);
-        guiMenu.setItem(1, item2);
+        for (MenuButton button : randomLootMainMenu.buttons) {
+            // Perform operations with each button
+            guiMenu.setItem(button.slot, button.toItemStack());
+        }
 
         // Register the event listener
-        getServer().getPluginManager().registerEvents(new EventListener(), plugin);
+        getServer().getPluginManager().registerEvents(new EventListener(guiMenu), plugin);
 
         // Open the GUI menu
         Player player = (Player) sender;
