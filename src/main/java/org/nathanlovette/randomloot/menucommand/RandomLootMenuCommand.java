@@ -33,18 +33,24 @@ public class RandomLootMenuCommand implements CommandExecutor {
 //            // Perform operations with each button
 //            guiMenu.setItem(button.slot, button.toItemStack());
 //        }
+
         ItemStack chestItemStack = new ItemStack(Material.CHEST);
         ItemMeta chestItemMeta = chestItemStack.getItemMeta();
         chestItemMeta.setDisplayName("Chest Info");
         chestItemStack.setItemMeta(chestItemMeta);
         guiMenu.addItem(chestItemStack);
 
-
         ItemStack appleItemStack = new ItemStack(Material.APPLE);
         ItemMeta appleItemMeta = appleItemStack.getItemMeta();
         appleItemMeta.setDisplayName("Item Info");
         appleItemStack.setItemMeta(appleItemMeta);
         guiMenu.addItem(appleItemStack);
+
+        ItemStack emeraldItemStack = new ItemStack(Material.EMERALD_BLOCK);
+        ItemMeta emeraldItemMeta = emeraldItemStack.getItemMeta();
+        emeraldItemMeta.setDisplayName("Generate command");
+        emeraldItemStack.setItemMeta(emeraldItemMeta);
+        guiMenu.setItem(8, emeraldItemStack);
 
         // Register the event listener
         getServer().getPluginManager().registerEvents(new MenuEventListener(guiMenu), plugin);
