@@ -105,7 +105,7 @@ public class RandomLootCommandKit implements CommandExecutor {
 
         // is args[5] (maximum amount) >= 0?
         //noinspection ConstantValue (why does it say that????)
-        if (givenMaxAmount < 0 ) {
+        if (givenMaxAmount < 0) {
             return false;
         }
 
@@ -138,19 +138,22 @@ public class RandomLootCommandKit implements CommandExecutor {
         }
 
         // Cast the block to Chest and get its inventory
+        int amountOfItems = 0;
         if (chestBlock.getState() instanceof Chest) {
             Chest chest = (Chest) chestBlock.getState();
             Inventory chestInventory = chest.getInventory();
 
             // Add items to the chest inventory
             // Create item stack
-            int amountOfItems = (int) Math.floor(Math.random() * (givenMaxAmount - givenMinAmount + 1) + givenMinAmount);
+            amountOfItems = (int) Math.floor(Math.random() * (givenMaxAmount - givenMinAmount + 1) + givenMinAmount);
             assert givenItem != null;
             ItemStack chestInventoryItemStack = new ItemStack(givenItem, amountOfItems);
 
             // Add the items
-             chestInventory.addItem(chestInventoryItemStack);
+            chestInventory.addItem(chestInventoryItemStack);
         }
+
+        commandSender.sendMessage("Placed chest at " + givenCoordinates[0] + ", " + givenCoordinates[1] + ", " + givenCoordinates[2] + " with " + amountOfItems + " " + givenItem + ".");
 
         return true;
     }
