@@ -11,3 +11,7 @@ commands:
     description: Creates a chest placed randomly between <x1> <y1> <z1> and <x2> <y2> <z2> coordinates containing <item> of a random amount between <minimumAmount> and <maximumAmount>
     usage: /<command> <x1> <y1> <z1> <x2> <y2> <z2> <item> <minimumAmount> <maximumAmount>
     permission: randomloot.randomloot
+  randomlootmultiplechest:
+    description: Creates a chest placed randomly certain coordinates containing multiple items of a random amounts
+    usage: /<command> <numberOfChests> <x1> <y1> <z1> <x2> <y2> <z2> <item1> <minimumAmount1> <maximumAmount1> [<item2> <minimumAmount2> <maximumAmount2>] ... [<itemN> <minimumAmountN> <maximumAmountN>]
+    permission: randomloot.randomloot
