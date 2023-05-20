@@ -34,7 +34,7 @@ public class RandomLootChestTabCompleter implements TabCompleter {
             completions.add("~");
         } else if (args.length == 7) {
             // Generate suggestions for the item argument
-            String input = args[3].toLowerCase(); // Get the input for the item argument
+            String input = args[args.length - 1].toLowerCase(); // Get the input for the item argument
             for (Material material : Material.values()) {
                 String materialName = material.name().toLowerCase();
                 if (materialName.startsWith(input)) {
