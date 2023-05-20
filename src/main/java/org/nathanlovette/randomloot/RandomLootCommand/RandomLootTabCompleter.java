@@ -1,4 +1,4 @@
-package org.nathanlovette.randomloot;
+package org.nathanlovette.randomloot.RandomLootCommand;
 
 import org.bukkit.Material;
 import org.bukkit.command.Command;

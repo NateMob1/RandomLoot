@@ -1,4 +1,4 @@
-package org.nathanlovette.randomloot;
+package org.nathanlovette.randomloot.RandomLootCommand;
 
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -12,8 +12,9 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.nathanlovette.randomloot.util;
 
-public class CommandKit implements CommandExecutor {
+public class RandomLootCommandKit implements CommandExecutor {
 
     @SuppressWarnings("NullableProblems")
     @Override
