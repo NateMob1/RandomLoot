@@ -212,7 +212,7 @@ public class RandomLootChestCommandKit implements CommandExecutor {
             chestInventory.addItem(chestInventoryItemStack);
         }
 
-        String responseMessage = "Created chest at " + randomChestCoordinates[0] + ", " + randomChestCoordinates[1] + ", " + randomChestCoordinates[2] + " with " + amountOfItems + " " + givenItem.toString().toLowerCase() + ".";
+        String responseMessage = "Created chest at " + randomChestCoordinates[0] + ", " + randomChestCoordinates[1] + ", " + randomChestCoordinates[2] + " with " + amountOfItems + " " + givenItem + ".";
         commandSender.sendMessage(responseMessage);
 
         return true;
