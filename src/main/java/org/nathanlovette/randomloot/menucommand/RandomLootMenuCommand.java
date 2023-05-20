@@ -42,7 +42,7 @@ public class RandomLootMenuCommand implements CommandExecutor {
 
         ItemStack appleItemStack = new ItemStack(Material.APPLE);
         ItemMeta appleItemMeta = appleItemStack.getItemMeta();
-        appleItemMeta.setDisplayName("Item Info");
+        appleItemMeta.setDisplayName("Loot Info");
         appleItemStack.setItemMeta(appleItemMeta);
         guiMenu.addItem(appleItemStack);
 
