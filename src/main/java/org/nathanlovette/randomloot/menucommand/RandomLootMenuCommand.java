@@ -5,10 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -33,6 +31,9 @@ public class RandomLootMenuCommand implements CommandExecutor {
 //            // Perform operations with each button
 //            guiMenu.setItem(button.slot, button.toItemStack());
 //        }
+
+        // set UUID to blank chest in TempPlayerStorage
+        TempPlayerStorage.playerOpenChests.put(((Player) sender).getUniqueId(), new Chest());
 
         ItemStack chestItemStack = new ItemStack(Material.CHEST);
         ItemMeta chestItemMeta = chestItemStack.getItemMeta();
