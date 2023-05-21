@@ -7,6 +7,7 @@ import org.nathanlovette.randomloot.RandomLootCommand.RandomLootCommandKit;
 import org.nathanlovette.randomloot.RandomLootCommand.RandomLootTabCompleter;
 import org.nathanlovette.randomloot.RandomLootMultipleChest.RandomLootMultipleChestCommandKit;
 import org.nathanlovette.randomloot.RandomLootMultipleChest.RandomLootMultipleChestTabCompleter;
+import org.nathanlovette.randomloot.RandomLootMultipleChestWeighted.RandomLootMultipleChestWeightedCommandKit;
 
 import java.util.Objects;
 
@@ -22,6 +23,8 @@ public final class RandomLoot extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("randomlootchest")).setTabCompleter(new RandomLootChestTabCompleter());
         Objects.requireNonNull(this.getCommand("randomlootmultiplechest")).setExecutor(new RandomLootMultipleChestCommandKit());
         Objects.requireNonNull(this.getCommand("randomlootmultiplechest")).setTabCompleter(new RandomLootMultipleChestTabCompleter());
+        Objects.requireNonNull(this.getCommand("randomlootmultiplechestweighted")).setExecutor(new RandomLootMultipleChestWeightedCommandKit());
+        Objects.requireNonNull(this.getCommand("randomlootmultiplechestweighted")).setTabCompleter(new RandomLootMultipleChestTabCompleter());
     }
 
     @Override
