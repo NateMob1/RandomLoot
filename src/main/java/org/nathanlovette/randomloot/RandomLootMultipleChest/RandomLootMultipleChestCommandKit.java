@@ -14,6 +14,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.nathanlovette.randomloot.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RandomLootMultipleChestCommandKit implements CommandExecutor {
 
     @Override
@@ -177,6 +180,9 @@ public class RandomLootMultipleChestCommandKit implements CommandExecutor {
         }
 
         int amountOfItems = 0;
+
+        List<String> itemMessages = new ArrayList<>(); // Store messages for each item added
+
         if (chestBlock.getState() instanceof Chest) {
             Chest chest = (Chest) chestBlock.getState();
             Inventory chestInventory = chest.getInventory();
@@ -191,11 +197,18 @@ public class RandomLootMultipleChestCommandKit implements CommandExecutor {
                     ItemStack itemStack = new ItemStack(item, itemAmount);
                     chestInventory.addItem(itemStack);
                     amountOfItems += itemAmount;
+
+                    // Create a message for the item
+                    String itemMessage = String.format("%s: %d", item.toString(), itemAmount);
+                    itemMessages.add(itemMessage);
                 }
             }
         }
 
-        String responseMessage = "Created chest at " + randomChestCoordinates[0] + ", " + randomChestCoordinates[1] + ", " + randomChestCoordinates[2] + " with " + amountOfItems + " items.";
-        commandSender.sendMessage(responseMessage);
+        // Create the message for added items
+        String itemAddedMessage = String.join(", ", itemMessages);
+
+        commandSender.sendMessage("Created chest at " + randomChestCoordinates[0] + ", " + randomChestCoordinates[1] + ", " + randomChestCoordinates[2] +
+                " with items: " + itemAddedMessage);
     }
 }

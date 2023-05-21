@@ -12,6 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.block.BlockState;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -165,12 +166,22 @@ public class RandomLootMultipleChestWeightedCommandKit implements CommandExecuto
         Location chestLocation = new Location(world, randomChestCoordinates[0], randomChestCoordinates[1], randomChestCoordinates[2]);
         Block chestBlock = world.getBlockAt(chestLocation);
 
-        // Check if the chest block is already a chest
-        if (chestBlock.getType() != Material.CHEST) {
-            chestBlock.setType(Material.CHEST);
+        // Set the block type to CHEST
+        chestBlock.setType(Material.CHEST);
+
+        // Get the chest state after setting the block type
+        BlockState blockState = chestBlock.getState();
+
+        // Check if the block state is a chest
+        if (!(blockState instanceof Chest)) {
+            // Handle the case when the block state is not a chest
+            // For example, you can display an error message and return
+            commandSender.sendMessage("Error: Failed to create a chest. BlockState: " + blockState);
+            return;
         }
 
-        Chest chest = (Chest) chestBlock.getState();
+        Chest chest = (Chest) blockState;
+
         Inventory chestInventory = chest.getBlockInventory();
 
         List<ItemStack> itemsToAdd = new ArrayList<>();
