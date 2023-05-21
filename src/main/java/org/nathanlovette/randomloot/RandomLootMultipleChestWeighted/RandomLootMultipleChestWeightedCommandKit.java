@@ -175,6 +175,8 @@ public class RandomLootMultipleChestWeightedCommandKit implements CommandExecuto
 
         List<ItemStack> itemsToAdd = new ArrayList<>();
 
+        List<String> itemMessages = new ArrayList<>(); // Store messages for each item added
+
         // Add items to the list
         for (int i = 0; i < items.length; i++) {
             Material item = items[i];
@@ -193,6 +195,10 @@ public class RandomLootMultipleChestWeightedCommandKit implements CommandExecuto
 
             ItemStack itemStack = new ItemStack(item, randomAmount);
             itemsToAdd.add(itemStack);
+
+            // Create a message for the item
+            String itemMessage = String.format("%s: %d", item.toString(), randomAmount);
+            itemMessages.add(itemMessage);
         }
 
         // Shuffle the list of items
@@ -207,7 +213,10 @@ public class RandomLootMultipleChestWeightedCommandKit implements CommandExecuto
             }
         }
 
+        // Create the message for added items
+        String itemAddedMessage = String.join(", ", itemMessages);
+
         commandSender.sendMessage("Created chest at " + randomChestCoordinates[0] + ", " + randomChestCoordinates[1] + ", " + randomChestCoordinates[2] +
-                " with " + itemsToAdd.size() + " items");
+                " with items: " + itemAddedMessage);
     }
 }
